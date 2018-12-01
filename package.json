@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "commander": "^2.19.0",
+    "inquirer": "^6.2.0",
+    "mongoose": "^5.3.14"
+  },
+  "scripts": {
+	  "start": "cd src && node cli.js --no-deprecation"
+  }
+}
