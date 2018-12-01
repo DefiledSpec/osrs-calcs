@@ -26,8 +26,11 @@ connectDB()
 let log = res => console.log('\n', res)
 
 async function start() {
-	log(await pc.calcXp('Oak', 50))
-	log(await pc.calcXp('Teak', 50, true))
+	// log(await pc.calcXp('oak', 50))
+	// log(await pc.calcXp('Teak', 50, true))
+	// log(await pc.calcCost('Oak', 50))
+	// log(await pc.calcCost('Teak', 50, true))
+	log(await pc.calcBoth('Oak', 10, true))
 
 
 	exit()

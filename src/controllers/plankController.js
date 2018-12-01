@@ -30,13 +30,32 @@ const plankController = {
 	},
 	async calcXp(type, qty, msg = false) {
 		let result = {
-			xp: 0,
-			msg: 'Record Not Found!',
+			type,
+			msg: `Record ${type} Not Found!`,
 			err: false
 		}
 		let plank = await Plank.findOne({type})			
 		if(plank) {
 			result = plank.calcXp(qty)
+		} else {
+			result.err = true
+		}
+		if(msg && !result.err) {	
+			return result.msg
+		} else {
+			result.err = true
+			return result
+		}	
+	},
+	async calcCost(type, qty, msg = false) {
+		let result = {
+			type,
+			msg: 'Record Not Found!',
+			err: false
+		}
+		let plank = await Plank.findOne({type})			
+		if(plank) {
+			result = plank.calcCost(qty)
 		} else {
 			result.err = true
 		}
@@ -46,8 +65,23 @@ const plankController = {
 			return result
 		}	
 	},
-	async calcCost(type, qty, msg = false) {
-		
+	async calcBoth(type, qty, msg = false) {
+		let result = {
+			type,
+			msg: 'Record Not Found!',
+			err: false
+		}
+		let plank = await Plank.findOne({type})			
+		if(plank) {
+			result = plank.calcBoth(qty)
+		} else {
+			result.err = true
+		}
+		if(msg && !result.err) {
+			return result.msg
+		} else {
+			return result
+		}
 	}
 }
 
